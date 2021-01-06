@@ -12,14 +12,14 @@
 
 #include "get_next_line.h"
 
-int	find_newline(char *temp)
+int	find_newline(char *line_temp)
 {
 	int			index;
 
 	index = 0;
-	while (temp[index])
+	while (line_temp[index])
 	{
-		if (temp[index] == '\n')
+		if (line_temp[index] == '\n')
 			return (index);
 		index++;
 	}
@@ -33,14 +33,14 @@ int	split_newline(char **line_temp, char **line, int newline_index)
 
 	(*line_temp)[newline_index] = '\0';
 	*line = ft_strdup(*line_temp);
-	len_after_newline = ft_strlen(line_temp[newline_index + 1]);
+	len_after_newline = ft_strlen(*line_temp + newline_index + 1);
 	if (len_after_newline == 0)
 	{
 		free(*line_temp);
 		*line_temp = 0;
 		return (1);
 	}
-	split_temp = ft_strdup(line_temp[newline_index + 1]);
+	split_temp = ft_strdup(*line_temp + newline_index + 1);
 	free(*line_temp);
 	*line_temp = split_temp;
 	return (1);

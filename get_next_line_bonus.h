@@ -13,18 +13,18 @@
 #ifndef GET_NEXT_LINE_H
 # define GET_NEXT_LINE_H
 
-#include <stdlib.h>
-#include <unistd.h>
-#include <fcntl.h>
-#include <limits.h>
+# include <stdlib.h>
+# include <unistd.h>
+# include <fcntl.h>
+# include <limits.h>
 
 # ifndef OPEN_MAX
 #  define OPEN_MAX 50
 # endif
 
-#ifndef BUFFER_SIZE
-# define BUFFER_SIZE 50
-#endif
+# ifndef BUFFER_SIZE
+#  define BUFFER_SIZE 50
+# endif
 
 size_t	ft_strlen(const char *s);
 size_t	ft_strlcat(char *dst, const char *src, size_t size);

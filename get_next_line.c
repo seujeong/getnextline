@@ -28,7 +28,7 @@ int	find_newline(char *line_temp)
 
 int	split_newline(char **line_temp, char **line, int newline_index)
 {
-	char		*split_temp;
+	char		*temp;
 	int			len_after_newline;
 
 	(*line_temp)[newline_index] = '\0';
@@ -40,9 +40,9 @@ int	split_newline(char **line_temp, char **line, int newline_index)
 		*line_temp = 0;
 		return (1);
 	}
-	split_temp = ft_strdup(*line_temp + newline_index + 1);
+	temp = ft_strdup(*line_temp + newline_index + 1);
 	free(*line_temp);
-	*line_temp = split_temp;
+	*line_temp = temp;
 	return (1);
 }
 

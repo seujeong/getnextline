@@ -109,7 +109,10 @@ char	*ft_strjoin(char const *s1, char const *s2)
 		if (!result)
 			return (NULL);
 		if (s1)
+		{
 			ft_strlcpy(result, s1, len_s1 + 1);
+			free(s1);
+		}
 		else
 			ft_strlcpy(result, s2, len_s2 + 1);
 		if (s1 && s2)

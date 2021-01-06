@@ -37,10 +37,11 @@ int	split_newline(char **line_temp, char **line, int newline_index)
 	if (len_after_newline == 0)
 	{
 		free(*line_temp);
+		*line_temp = 0;
 		return (1);
 	}
 	split_temp = ft_strdup(line_temp[newline_index + 1]);
-	free(line_temp);
+	free(*line_temp);
 	*line_temp = split_temp;
 	return (1);
 }

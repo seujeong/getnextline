@@ -17,8 +17,6 @@ int	find_newline(char *temp)
 	int			index;
 
 	index = 0;
-	if (temp == 0)
-		return (-1);
 	while (temp[index])
 	{
 		if (temp[index] == '\n')

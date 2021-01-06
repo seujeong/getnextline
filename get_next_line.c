@@ -56,7 +56,7 @@ int	return_end(char **line_temp, char **line, int read_byte)
 	else if (*line_temp)
 	{
 		*line = *line_temp;
-		*line_temp = '/0';
+		*line_temp = 0;
 		return (0);
 	}
 	*line = ft_strdup("");
@@ -72,12 +72,12 @@ int	get_next_line(int fd, char **line)
 
 	if ((fd < 0) || (line == NULL) || (BUFFER_SIZE <= 0))
 		return (-1);
-	while (read_byte = read(fd, buf, BUFFER_SIZE))
+	while ((read_byte = read(fd, buf, BUFFER_SIZE)) > 0)
 	{
-		buf[read_byte] = NULL;
+		buf[read_byte] = '\0';
 		line_temp[fd] = ft_strjoin(line_temp[fd], buf);
 		if ((newline_index = find_newline(line_temp[fd]) >= 0))
-			return (split_newline(line_temp[fd], buf, newline_index));
+			return (split_newline(&line_temp[fd], line, newline_index));
 	}
-	return (return_end);
+	return (return_end(&line_temp[fd], line, read_byte));
 }

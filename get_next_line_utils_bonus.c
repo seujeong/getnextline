@@ -81,32 +81,6 @@ size_t	ft_strlcpy(char *dst, const char *src, size_t dstsize)
 	return (s_len);
 }
 
-size_t	ft_strlcat(char *dst, const char *src, size_t size)
-{
-	size_t i;
-	size_t j;
-	size_t d_len;
-	size_t s_len;
-
-	d_len = ft_strlen(dst);
-	s_len = ft_strlen(src);
-	i = d_len;
-	j = 0;
-	if (size > 0 && d_len < size - 1)
-	{
-		while (src[j] && d_len + j < size - 1)
-		{
-			dst[i] = src[j];
-			i++;
-			j++;
-		}
-		dst[i] = 0;
-	}
-	if (d_len > size)
-		d_len = size;
-	return (d_len + s_len);
-}
-
 char	*ft_strjoin(char const *s1, char const *s2)
 {
 	char	*result;
@@ -126,7 +100,7 @@ char	*ft_strjoin(char const *s1, char const *s2)
 		else
 			ft_strlcpy(result, s2, len_s2 + 1);
 		if (s1 && s2)
-			ft_strlcat(result, s2, len_s1 + len_s2 + 1);
+			ft_strlcpy(result + len_s1, s2, len_s2 + 1);
 	}
 	return (result);
 }

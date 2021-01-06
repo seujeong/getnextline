@@ -53,7 +53,7 @@ int	return_end(char **line_temp, char **line, int read_byte)
 	if (read_byte < 0)
 		return (-1);
 	if (*line_temp && (newline_index = find_newline(*line_temp)) >= 0)
-		return (split_line(line_temp, line, newline_index));
+		return (split_newline(line_temp, line, newline_index));
 	else if (*line_temp)
 	{
 		*line = *line_temp;
@@ -67,11 +67,11 @@ int	return_end(char **line_temp, char **line, int read_byte)
 int	get_next_line(int fd, char **line)
 {
 	static char	*line_temp[OPEN_MAX];
-	char		*buf;
+	char		buf[BUFFER_SIZE + 1];
 	int			read_byte;
 	int			newline_index;
 
-	if ((fd < 0) || (line == NULL) || (BUFFER_SIZE <= 0))
+	if ((fd < 0) || (line == 0) || (BUFFER_SIZE <= 0))
 		return (-1);
 	while ((read_byte = read(fd, buf, BUFFER_SIZE)) > 0)
 	{
